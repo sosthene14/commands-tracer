@@ -1,0 +1,149 @@
+ .text_shown_in_commands_list
+{
+ 
+  font-size: 1.2em;
+  resize: none;
+  height: 35px;
+  margin: auto;
+  position: relative;
+  top: 12px;
+  width: 100%;
+  outline: none;
+  border: none;
+}
+.text_shown_in_commands_list:disabled
+{
+    background-color: rgb(236, 238, 238);
+    text-align: center;
+    
+}
+.div_for_informations_shown
+{
+    font-weight: bold;
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   margin-top: 40px;
+}
+.text_counting_clients_number
+{
+    margin-left: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(110, 198, 249);
+}
+#btn_for_seeing_commands
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.btn_for_removing_commands
+{
+    background-color:green;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+.modify_commands_btn
+{
+    background-color: red;
+    margin-top: 50px;
+}
+
+.btn_for_removing_commands:active
+{
+    background-color: #962c0f;
+}
+@media only screen and (max-width: 379px)
+{
+    
+    .btn_for_removing_commands
+    {
+        margin-top: 20px;
+       
+    }
+    .text_shown_in_commands_list
+    {
+     
+      font-size:1em;
+      resize: none;
+      height: 35px;
+      margin-top: 30px;
+      position: relative;
+      top: -5px;
+      width: 90%;
+      outline: none;
+      border: none;
+    }
+}
+body
+{
+    overflow-x: hidden;
+}
+
+.logo
+{
+    width: 40%;
+}
+#link
+{
+    color: rgb(255, 93, 255); 
+}
+#links:hover
+{
+color: rgb(255, 93, 255);
+}
+.line
+{
+    position: relative;
+    bottom: 15px;
+    width: 100%;
+    color: rgb(187, 186, 186);
+}
+.horizontal-line
+{
+    width: 1px;
+    height: 80px;
+    background-color: rgb(43, 180, 228);
+    position: relative;
+    right: 80px;
+}
+@media only screen and (max-width: 1000px)
+{
+    .horizontal-line
+    {
+        display: none;
+    }
+}
+
+#connexion_div
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+    position: relative;
+    top: 50px;
+}
+#btn-submit
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    width: auto;
+    margin: auto;
+}
+#stay_connected
+{
+    position: relative;
+    top: 400px;
+}
+#my_body
+{
+    width: 100%;
+    margin: auto;
+}

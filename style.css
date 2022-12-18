@@ -1,0 +1,306 @@
+body
+{
+    overflow-x: hidden;
+}
+
+.logo
+{
+    width: 40%;
+}
+#link
+{
+    color: rgb(255, 93, 255); 
+}
+#links:hover
+{
+color: rgb(255, 93, 255);
+}
+.line
+{
+    position: relative;
+    bottom: 15px;
+    width: 100%;
+    color: rgb(187, 186, 186);
+}
+.horizontal-line
+{
+    width: 1px;
+    height: 80px;
+    background-color: rgb(43, 180, 228);
+    position: relative;
+    right: 80px;
+}
+
+  #trader-picture
+  {
+    margin-top: 20px;
+    box-shadow: 5px 5px 10px rgb(62, 62, 62) ;
+  }
+  .trader-picture-and-text
+  {
+    background-color: #62A5C8;
+    height: 780px;
+  }
+
+  @media only screen and (max-width: 1000px)
+{
+    .horizontal-line
+    {
+        display: none;
+        
+    }
+   
+}
+.trader-picture-and-text
+{
+    align-items: center;
+    display: flex;
+}
+.text-at-the-right-of-trader-picture
+{
+    margin-left: 5%;
+    text-align: center;
+    color: rgb(227, 255, 247);
+    margin-top: 50px;
+}
+@media only screen and (max-width: 1200px)
+{
+    .horizontal-line
+    {
+        display: none;
+    }
+    .trader-picture-and-text
+{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+}
+#start-btn
+{
+    margin-top: 80px;
+    border: none;
+    color: rgb(255, 255, 255);
+    transition: all 1s;
+
+}
+#start-btn:hover
+{
+
+    background-color: #ffffff;
+    border: none;
+    transition: all 1s;
+    
+}
+.text-and-btn
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#anch
+{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+#anch:hover
+{
+    color: rgb(167, 165, 165);
+}
+.first-div-form
+{
+   
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+form
+{
+    padding-bottom: 50px;
+    background-color: #ffffff;
+    width: 29%;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px rgb(62, 62, 62) ;
+}
+@media only screen and (max-width: 600px)
+{
+    .first-div-form
+    {
+       
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 0px;
+    }
+    .second-form
+{
+display: flex;
+width: 60%;
+margin: auto;
+flex-direction: column;
+gap: 30%;
+margin-top: 5px;
+}
+form 
+{
+    width: 90%;
+}
+}
+.form-contains
+{
+    margin-top: 20px;
+    border: none;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    outline: none;
+
+}
+.form-contains:focus
+{
+    border-bottom: 1px solid #62A5C8;
+}
+.second-form
+{
+margin: auto;
+display: flex;
+justify-content: center;
+gap: 3%;
+margin-top: 15px;
+}
+.priority_text
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.select-div
+{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin-top: 20px;
+}
+#form-second-part
+{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.div-for-form
+{
+    margin-top: 60px;
+}
+
+.cont
+{
+    background-color: #62A5C8;
+}
+#second-part-of-first-form
+{
+    margin-top: 30px;
+}
+#first_name
+{
+    position: relative;
+    top: 10px;
+}
+.submit-btn
+{
+    display: flex;
+    justify-content: center;
+}
+#select-div
+{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+#dropdown
+{
+    margin-left: 10px;
+    display: inline;
+}
+.div-for-moving-select-option
+{
+margin-top: 40px;
+}
+@media screen and (orientation: landscape) {
+    form 
+    {
+        width: 80%;
+    }
+    .div-for-form
+    {
+        margin-top: 280px;
+    }
+    }
+    @media only screen and (min-width: 1200px)
+{
+form 
+{
+    width: 40%;
+}
+}
+#products_list
+{
+    background-color: #62A5C8;
+    width: 60%;
+    display: none;
+}
+#priorities_list
+{
+    background-color: #62A5C8;
+    width: 60%;
+    display: none;
+}
+#cities_list
+{
+    background-color: #62A5C8;
+    width: 60%;
+    display: none;
+}
+span
+{
+    margin-left: 10px;
+    float: left;
+    text-align: left;
+}
+#span-and-input
+{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.span-and-input
+{
+    display: flex;
+    justify-content: space-between; 
+    width: 100%;
+}
+.form-check-input
+{
+    margin-right: 10px;
+}
+.radio_btn
+{
+    margin-right: 10px;
+    background-color: #62A5C8;
+    width: 20px;
+    outline: none;
+}
+#btn-submit
+{
+
+    display: flex;
+    justify-content: center;
+}
+.my_textarea
+{
+    resize: none;
+}
