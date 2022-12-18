@@ -9,18 +9,18 @@ let id_and_password =
 {
    "person1":
    {
-    "id":"stan",
-    "password":"1234"
+    "id":"stanislas",
+    "password":"123456"
    },
    "person2":
    {
-    "id":"chris",
+    "id":"christophe",
     "password":"4321"
    },
    "person3":
    {
     "id":"messi",
-    "password":"goat"
+    "password":"legoat"
    }
 };
 
