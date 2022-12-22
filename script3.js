@@ -8,20 +8,14 @@ const password = "..sss5dd*-+//sssczzyzsskz)z=";
 let id_and_password = 
 {
    "person1":
-   {
-    "id":"stanislas",
-    "password":"123456"
-   },
+   ["stanislas","123456"]
+  ,
+
    "person2":
-   {
-    "id":"christophe",
-    "password":"4321"
-   },
+   ["chris","h422"],
+
    "person3":
-   {
-    "id":"messi",
-    "password":"legoat"
-   }
+   ["louis","zz42"],
 };
 
 if ( (names in localStorage) && (password) in localStorage)
@@ -31,7 +25,7 @@ if ( (names in localStorage) && (password) in localStorage)
 }
 else
 {
-  function myFunction()
+  function hide_or_show_password()
   
   {
 
@@ -52,7 +46,7 @@ else
    {
     if(document.getElementById("keep_connection").checked == true)
     {
-        if(id.value == id_and_password["person"+i]["id"] && pass.value == id_and_password["person"+i]["password"])
+        if(id.value == id_and_password["person"+i][0] && pass.value == id_and_password["person"+i][1])
 
         {
             localStorage.setItem(names,id.value);
@@ -64,13 +58,14 @@ else
         localStorage.removeItem(names);
         localStorage.removeItem(password);
     }
-    if(id.value == id_and_password["person"+i]["id"] && pass.value == id_and_password["person"+i]["password"] )
+    if(id.value == id_and_password["person"+i][0] && pass.value == id_and_password["person"+i][1] )
 
         {
             window.location.replace("commands_list.html");       
         }
    }  
    annimate_inputs_if_false(); 
+   stop
  }
  
 
@@ -81,19 +76,3 @@ function annimate_inputs_if_false()
 }
  
 }
-
-
-
-
-
-
-
-
-
-        
-        
-        
-        
-        
-        
-     
