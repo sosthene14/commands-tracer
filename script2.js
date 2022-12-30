@@ -10,8 +10,8 @@ const names_of_commands_composition = [
   "Information Commande",
   "Nom (s) : ",
   "Prénom (s) : ",
-  "Numéro de téléphone : ",
   "E-mail : ",
+  "Numéro de téléphone : ",
   "Quantité : ",
   "Date : ",
   "Priorité : ",
@@ -20,357 +20,269 @@ const names_of_commands_composition = [
 ];
 const type_of_input_to_create = "textarea";
 const type_of_container_to_create = "div";
+const cities_list = "liste_city";
+const products_list = "liste_products";
+const input_type = "input";
 
-function main() {
-  for (let i = 1; i < parseInt(localStorage["k"]); i++) {
-    try {
-      /*************************************************************************************************/
-      const get_lists_without_input = localStorage["liste" + i];
-      const split_lists_without_input = get_lists_without_input.split(",");
-      document.getElementById("text_if_empty_commands_list").textContent = "";
-      let client_text = document.createElement("h4");
-      upload_names_of_divs_of_commands_composition(client_text,0);
-      client_text.style.marginTop = "30px";
-      client_text.classList.add("text_counting_clients_number");
+let liste = [];
+function push_informations_in_list_if_in_localestorage()
+{
+  let information_to_convert = "";
+  let informations_to_search = "Client_data";
 
-      /*************************************************************************************************/
+  for (let i = 0; i < localStorage['k']; i++)
+{
+  if (informations_to_search+i in localStorage)
+  {
+    information_to_convert = localStorage[informations_to_search+i];
+    const converted_information = JSON.parse(information_to_convert);
+    liste.push(converted_information);
+  }
+  
+} 
+return liste;
+}
+const get_lenght = push_informations_in_list_if_in_localestorage().length;
 
-      let div_name = document.createElement(type_of_container_to_create);
-      upload_names_of_divs_of_commands_composition(div_name,1);
-      let name = document.createElement(type_of_input_to_create);
+for (let j = 0; j < get_lenght; j++)
+{
+  try
+  { 
+    
+  let title = document.createElement('p');
+  define_divs_name(title,names_of_commands_composition[0]);
+  principal_div.appendChild(title);
+  
+/***************************************************************************************/
+  let name_div = create_elements_div(type_of_container_to_create);
+  let names = create_elements_span(input_type);
+  define_divs_name(name_div,names_of_commands_composition[1]);
+  names.value = push_informations_in_list_if_in_localestorage()[j]['nom'];
+  append_childs_to_principals_divs(principal_div,names,name_div);
 
-      /*************************************************************************************************/
+  /***************************************************************************************/
+  let first_name_div = create_elements_div(type_of_container_to_create);
+  let first_name = create_elements_span(input_type);
+  define_divs_name(first_name_div,names_of_commands_composition[2]);
+  first_name.value = push_informations_in_list_if_in_localestorage()[j]['prenom'];
+  append_childs_to_principals_divs(principal_div,first_name,first_name_div);
 
-      let div_first_name = document.createElement(type_of_container_to_create);
-      upload_names_of_divs_of_commands_composition(div_first_name,2);
-      let first_name = document.createElement(type_of_input_to_create);
+/******************************************************************************************/
+  let email_div = create_elements_div(type_of_container_to_create);
+  let email = create_elements_span(input_type);
+  define_divs_name(email_div,names_of_commands_composition[3]);
+  email.value = push_informations_in_list_if_in_localestorage()[j]['email'];
+  append_childs_to_principals_divs(principal_div,email,email_div);
+/*******************************************************************************************/
+  let phone_div = create_elements_div(type_of_container_to_create);
+  let phone = create_elements_span(input_type);
+  define_divs_name(phone_div,names_of_commands_composition[4]);
+  phone.value = push_informations_in_list_if_in_localestorage()[j]['number_phone'];
+  append_childs_to_principals_divs(principal_div,phone,phone_div);
 
-      /*************************************************************************************************/
+  /***************************************************************************************/
+  let products_div = create_elements_div(type_of_container_to_create);
+  let products = create_elements_span(input_type);
+  let list_products = [];
+  define_divs_name(phone_div,names_of_commands_composition[8]);
+  for (let i = 0; i < 16; i++)
+  {
+    if ('produit'+i in push_informations_in_list_if_in_localestorage()[j])
+    {
+      list_products.push(push_informations_in_list_if_in_localestorage()[j]['produit'+i]);
+    }
+  }
+  const list_products_splited = list_products.toString().split(",");
+  const filter_products_list = [...new Set(list_products_splited)];
+  products.value = filter_products_list.toString().replaceAll(",,",",");
+  append_childs_to_principals_divs(principal_div,products,products_div);
 
-      let div_email = document.createElement("div");
-      let email = document.createElement(type_of_input_to_create);
-      upload_names_of_divs_of_commands_composition(div_email,3);
+  /**********************************************************************************************/
+  let priorities_div = create_elements_div(type_of_container_to_create);
+  let priorities = create_elements_span(input_type);
+  define_divs_name(priorities_div,names_of_commands_composition[7]);
+  priorities.value = push_informations_in_list_if_in_localestorage()[j]['priorité'];
+  append_childs_to_principals_divs(principal_div,priorities,priorities_div);
 
-      /*************************************************************************************************/
+  /*******************************************************************************************/
+  let cities_div = create_elements_div(type_of_container_to_create);
+  let cities = create_elements_span(input_type);
+  let list_cities = [];
+  define_divs_name(cities_div,names_of_commands_composition[9]);
+  for (let i = 0; i < 6; i++)
+  {
+    if ('villes'+i in push_informations_in_list_if_in_localestorage()[j])
+    {
+      list_cities.push(push_informations_in_list_if_in_localestorage()[j]['villes'+i]);
+    }
+    
+  }
+  const list_cities_splited = list_cities.toString().split(",");
+  const filter_cities_list = [...new Set(list_cities_splited)];
+  cities.value = filter_cities_list.toString().replaceAll(",,",",");
+  append_childs_to_principals_divs(principal_div,cities,cities_div);
 
-      let div_number = document.createElement(type_of_container_to_create);
-      let number = document.createElement(type_of_input_to_create);
-      upload_names_of_divs_of_commands_composition(div_number,4);
+  /*******************************************************************************************/
+  let quantities_div = create_elements_div(type_of_container_to_create);
+  let quantities = create_elements_span(input_type);
+  define_divs_name(quantities_div,names_of_commands_composition[5]);
+  quantities.value = push_informations_in_list_if_in_localestorage()[j]['quantity'];
+  append_childs_to_principals_divs(principal_div,quantities,quantities_div);
 
-      /*************************************************************************************************/
+  /*******************************************************************************************/
+  let dates_div = create_elements_div(type_of_container_to_create);
+  let date = create_elements_span(input_type);
+  define_divs_name(dates_div,names_of_commands_composition[6]);
+  date.value = push_informations_in_list_if_in_localestorage()[j]['date'];
+  append_childs_to_principals_divs(principal_div,date,dates_div);
 
-      let div_quantity = document.createElement(type_of_container_to_create);
-      let quantity = document.createElement(type_of_input_to_create);
-      upload_names_of_divs_of_commands_composition(div_quantity,5);
+  /*******************************************************************************************/
 
-      /*************************************************************************************************/
-      let div_date = document.createElement(type_of_container_to_create);
-      let date = document.createElement(type_of_input_to_create);
-      upload_names_of_divs_of_commands_composition(div_date,6);
+  let modify_commands_btn = document.createElement("button");
+  modify_commands_btn.textContent = text_activate_modification;
+  modify_commands_btn.classList.add("btn_for_removing_commands");
+  principal_div.appendChild(modify_commands_btn);
 
-      /*************************************************************************************************/
-
-      let div_priority = document.createElement(type_of_container_to_create);
-      let priority = document.createElement(type_of_input_to_create);
-      priority.textContent = localStorage["liste_priority" + i];
-      upload_names_of_divs_of_commands_composition(div_priority,7);
-
-      /*************************************************************************************************/
-
-      let div_products = document.createElement(type_of_container_to_create);
-      let string_listproduct_without_filter = localStorage["liste_product" + i];
-      let create_listproducts = string_listproduct_without_filter.split(",");
-      let listproducts_filter = [...new Set(create_listproducts)];
-      let products = document.createElement(type_of_input_to_create);
-      let new_products_liste = products.value.split(",");
-      upload_names_of_divs_of_commands_composition(div_products,8);
-      products.textContent = listproducts_filter.toString();
-
-      /*************************************************************************************************/
-
-      let div_cities = document.createElement(type_of_container_to_create);
-      let string_listcities_without_filter = localStorage["liste_city" + i];
-      let create_listcities = string_listcities_without_filter.split(",");
-      let listcities_filter = [...new Set(create_listcities)];
-      let cities = document.createElement(type_of_input_to_create);
-      let new_cities_liste = cities.value.split(",");
-      upload_names_of_divs_of_commands_composition(div_cities,9);
-      cities.textContent = listcities_filter.toString();
-
-      /*************************************************************************************************/
-
-        function upload_names_of_divs_of_commands_composition(name,index)
-        {
-            name.textContent = names_of_commands_composition[index]
-        }
-
-      function upload_some_contains_of_commands_list() {
-        let list_all_commands_composition = [
-          cities,
-          name,
-          priority,
-          first_name,
-          products,
-          date,
-          quantity,
-          number,
-          email,
-        ];
-        let list_commands_composition_different_from_a_list = [
-          name,
-          first_name,
-          email,
-          number,
-          quantity,
-          date,
-        ];
-
-        for (let i = 0; i < list_all_commands_composition.length; i++) {
-          list_all_commands_composition[i].classList.add(
-            "text_shown_in_commands_list"
-          );
-        }
-        for (
-          let i = 0;
-          i < list_commands_composition_different_from_a_list.length;
-          i++
-        ) {
-          list_commands_composition_different_from_a_list[i].textContent =
-            split_lists_without_input[i];
-        }
-      }
-      upload_some_contains_of_commands_list();
-
-      function commands_list_disabled_to_true(...args) {
-        for (let arg of args) {
-          arg.disabled = true;
-        }
-      }
-
-      commands_list_disabled_to_true(
-        cities,
-        name,
-        priority,
-        first_name,
-        products,
-        date,
-        quantity,
-        number,
-        email
-      );
-
-      function append_child_to_parent_div_corresponding_to_their_names() {
-        let liste_div = [
-          div_name,
-          div_first_name,
-          div_email,
-          div_number,
-          div_quantity,
-          div_date,
-          div_priority,
-          div_products,
-          div_cities,
-        ];
-        let liste_contents_of_div = [
-          name,
-          first_name,
-          email,
-          number,
-          quantity,
-          date,
-          priority,
-          products,
-          cities,
-        ];
-
-        for (let i = 0; i < liste_div.length; i++) {
-          liste_div[i].appendChild(liste_contents_of_div[i]);
-        }
-      }
-
-      append_child_to_parent_div_corresponding_to_their_names();
-
-      function append_child_to_principal_div(...args) {
-        for (let arg of args) {
-          principal_div.appendChild(arg);
-        }
-      }
-      append_child_to_principal_div(
-        client_text,
-        div_name,
-        div_first_name,
-        div_email,
-        div_number,
-        div_quantity,
-        div_date,
-        div_priority,
-        div_products,
-        div_cities
-      );
-      function disposition_of_informations(...args) {
-        for (let arg of args) {
-          arg.classList.add("div_for_informations_shown");
-        }
-      }
-      disposition_of_informations(
-        div_cities,
-        div_date,
-        div_email,
-        div_first_name,
-        div_quantity,
-        div_products,
-        div_priority,
-        div_number,
-        div_name
-      );
-
-      function commands_list_disabled_to_false(...args) {
-        for (let arg of args) {
-          arg.disabled = false;
-        }
-      }
-
-      function put_modification_commands_list_to_true() {
-        commands_list_disabled_to_true(
-          cities,
-          name,
-          priority,
-          first_name,
-          products,
-          date,
-          quantity,
-          number,
-          email
-        );
-      }
-
-      function put_modification_commands_list_to_false() {
-        commands_list_disabled_to_false(
-          cities,
-          name,
-          priority,
-          first_name,
-          products,
-          date,
-          quantity,
-          number,
-          email
-        );
-      }
-
-      let modify_commands_btn = document.createElement("button");
+    modify_commands_btn.addEventListener("click",(e) => {
+    if (modify_commands_btn.textContent == text_activate_modification)
+    {
+      commands_list_disabled_to_false(names,first_name,email,phone,products,priorities,cities,quantities,date);
+      modify_commands_btn.textContent = text_desactivate_modification;
+      modify_commands_btn.style.backgroundColor = "red";
+    }
+    else
+    {
+      commands_list_disabled_to_true(names,first_name,email,phone,products,priorities,cities,quantities,date);
       modify_commands_btn.textContent = text_activate_modification;
-      modify_commands_btn.classList.add("btn_for_removing_commands");
-      principal_div.appendChild(modify_commands_btn);
+      modify_commands_btn.style.backgroundColor = "green";
+      update_localstorage_content();
+    }
 
-      modify_commands_btn.onclick = function modify_commands_list_items() {
-        let liste_of_informations_using_textarea = [
-          name.value,
-          first_name.value,
-          email.value,
-          number.value,
-          quantity.value,
-          date.value,
-        ];
+    function update_localstorage_content()
+    {
+      for (let i = 0; i < localStorage['k']; i++)
+      {
+        if ('Client_data'+i in localStorage)
+        {
+          let new_data = JSON.stringify(liste[j]);
+          if (localStorage['Client_data'+i] == new_data)
+          {
+            modifie_items("nom",names);
+            modifie_items("prenom",first_name);
+            modifie_items("email",email);
+            modifie_items("number_phone",phone);
+            modifie_items("date",date);
+            modifie_items("quantity",quantities);
+            modifie_items("priorité",priorities);
 
-        if (modify_commands_btn.textContent == text_desactivate_modification) {
-          put_modification_commands_list_to_true();
-
-          for (
-            let i = 0;
-            i < liste_of_informations_using_textarea.length;
-            i++
-          ) {
-            list_client_information1[i] =
-              liste_of_informations_using_textarea[i];
+            for (let i = 0; i < 16; i++)
+            {
+              if ('produit'+i in liste[j])
+              {
+                modifie_items("produit"+i,products);
+              }
+              if ('villes'+i in liste[j])
+              {
+                modifie_items('villes'+i,cities);
+              }
+            }
+            localStorage.setItem('Client_data'+i,JSON.stringify(liste[j]));
           }
-
-          liste_priority1[0] = priority.value;
-
-          for (let i = 0; i < new_products_liste.length; i++) {
-            new_products_liste[i] = products.value;
-          }
-          for (let i = 0; i < new_cities_liste.length; i++) {
-            new_cities_liste[i] = cities.value;
-          }
-
-          let liste_of_commands_different_from_textarea = [
-            "liste" + i,
-            "liste_product" + i,
-            "liste_city" + i,
-            "liste_priority" + i,
-          ];
-          let liste_new_information_for_lists_different_from_textarea = [
-            list_client_information1,
-            new_products_liste,
-            new_cities_liste,
-            liste_priority1,
-          ];
-
-          for (
-            let i = 0;
-            i < liste_of_commands_different_from_textarea.length;
-            i++
-          ) {
-            localStorage.setItem(
-              liste_of_commands_different_from_textarea[i],
-              liste_new_information_for_lists_different_from_textarea[i]
-            );
-          }
-
-          modify_commands_btn.style.backgroundColor = "green";
-          modify_commands_btn.textContent = text_activate_modification;
-        } else if (
-          modify_commands_btn.textContent == text_activate_modification
-        ) {
-          put_modification_commands_list_to_false();
-
-          modify_commands_btn.style.backgroundColor = "red";
-          modify_commands_btn.textContent = text_desactivate_modification;
-          modify_commands_btn.style.marginTop = "5px";
         }
-      };
-
-      function items_deleter_in_page(...args) {
-        for (let arg of args) {
-          principal_div.removeChild(arg);
-        }
+         
       }
+    }
+})
 
-      function items_deleter_in_localstorage(...args) {
-        for (let arg of args) {
-          localStorage.removeItem(arg);
+let delete_commands_btn = document.createElement("button");
+delete_commands_btn.textContent = text_delete_command;
+delete_commands_btn.classList.add("btn_for_removing_commands");
+principal_div.appendChild(delete_commands_btn);
+delete_commands_btn.addEventListener("click", (e) =>{
+e.preventDefault()
+    remove_content_of_principal_div(name_div,title,first_name_div,modify_commands_btn,delete_commands_btn,phone_div,email_div,products_div,priorities_div,cities_div,quantities_div,dates_div);
+    for (let i = 0; i < localStorage['k']; i++)
+    {
+      let new_data = JSON.stringify(liste[j]);
+      if ('Client_data'+i in localStorage)
+      {
+        if (localStorage['Client_data'+i] == new_data)
+        {
+          localStorage.removeItem('Client_data'+i);
         }
-      }
+      } 
+    }   
+}
+)
+/********************************************************************************************** */
+function modifie_items(parameter1,paramatre2)
+{
+  
+    liste[j][parameter1] = paramatre2.value;
+}
+  /******************************************************************************************/
 
-      let delete_commands_btn = document.createElement("button");
-      delete_commands_btn.textContent = text_delete_command;
-      delete_commands_btn.classList.add("btn_for_removing_commands");
-      principal_div.appendChild(delete_commands_btn);
+  function commands_list_disabled_to_true(...args) {
+    for (let arg of args) {
+      arg.disabled = true;
+    }
+  }
+  commands_list_disabled_to_true(names,first_name,email,phone,products,priorities,cities,quantities,date)
 
-      delete_commands_btn.onclick = function remove_items() {
-        items_deleter_in_page(
-          div_priority,
-          div_products,
-          div_name,
-          div_first_name,
-          div_date,
-          div_email,
-          div_cities,
-          div_number,
-          div_quantity,
-          modify_commands_btn,
-          delete_commands_btn,
-          client_text
-        );
-        items_deleter_in_localstorage(
-          "liste" + i,
-          "liste_product" + i,
-          "liste_priority" + i,
-          "liste_city" + i
-        );
-      };
-    } catch {}
+  function commands_list_disabled_to_false(...args) {
+    for (let arg of args) {
+      arg.disabled = false;
+    }
+  }
+
+  function design_of_divs(...args) {
+    for (let arg of args) {
+      arg.classList.add("div_for_informations_shown");
+    }
+  }
+  design_of_divs(name_div,first_name_div,email_div,phone_div,products_div,priorities_div,cities_div,quantities_div,dates_div,title);
+
+  function design_of_divs_contains(...args) {
+    for (let arg of args) {
+      arg.classList.add("text_shown_in_commands_list");
+    }
+  }
+  design_of_divs_contains(names,first_name,email,phone,products,priorities,cities,quantities,date);
+}
+catch
+{
+  
+}
+}
+
+function create_elements_div(a)
+{
+return document.createElement(a);
+}
+
+function create_elements_span(b)
+{
+return document.createElement(b);
+}
+
+function define_divs_name(parameter1,paramatre2)
+{
+  parameter1.textContent = paramatre2;
+}
+
+function append_childs_to_principals_divs(principal_div_name,element,second_div_name)
+{
+  second_div_name.appendChild(element);
+  principal_div_name.appendChild(second_div_name);
+}
+
+function remove_content_of_principal_div(...args) {
+  for (let arg of args) {
+    principal_div.removeChild(arg);
   }
 }
-main();
+
+function append_elements_to_others_div(others_div,element)
+{
+  others_div.appendChild(element);
+}

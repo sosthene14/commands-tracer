@@ -6,24 +6,27 @@
   height: 35px;
   margin: auto;
   position: relative;
-  top: 12px;
+  top: 3px;
   width: 100%;
   outline: none;
   border: none;
+  font-weight: normal;
+  margin-top: 5px;
+  text-align: center;
 }
 .text_shown_in_commands_list:disabled
 {
     background-color: rgb(236, 238, 238);
     text-align: center;
+    font-weight: normal;
     
 }
 .div_for_informations_shown
 {
-    font-weight: bold;
+   font-weight: bold;
    text-align: center;
-   display: flex;
-   flex-direction: column;
-   margin-top: 40px;
+   margin-top: 20px;
+  
 }
 .text_counting_clients_number
 {
@@ -71,12 +74,12 @@
       font-size:1em;
       resize: none;
       height: 35px;
-      margin-top: 30px;
       position: relative;
-      top: -5px;
+      top: 10px;
       width: 90%;
       outline: none;
       border: none;
+      font-weight: normal;
     }
 }
 body

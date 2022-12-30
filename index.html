@@ -23,7 +23,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav gap-4" >
               <li class="nav-item">
-                <a class="nav-link" aria-current="page"  href="" id="link">Acceuil</a>
+                <a class="nav-link" aria-current="page"  href="#" id="link">Acceuil</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="authentification.html" id="links">Liste Commandes</a>
@@ -47,18 +47,18 @@
       <div class="align-items-center">
         <div class="first-div-form" id="first-part-of-first-form">
         <div class="col-auto" style="margin-top: 20px;">
-          <input type="text" id="name" multiple pattern="[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]{2,60}" title="" placeholder="Nom du client " minlength="2" required class="form-contains" autocomplete="on"  aria-describedby="passwordHelpInline">
+          <input type="text" id="name" name="nom" multiple pattern="[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]{2,60}" title="" placeholder="Nom du client " minlength="2" required class="form-contains" autocomplete="on"  aria-describedby="passwordHelpInline">
         </div>
         <div class="col-auto">
-          <input type="text" id="first_name" pattern="[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]{2,60}" placeholder="Prenom du client " required class="form-contains" autocomplete="on" aria-describedby="passwordHelpInline">
+          <input type="text" id="first_name" name="prenom" pattern="[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]{2,60}" placeholder="Prenom du client " required class="form-contains" autocomplete="on" aria-describedby="passwordHelpInline">
         </div>
       </div>
       <div class="first-div-form" id="second-part-of-first-form">
         <div class="col-auto">
-          <input type="email"  placeholder="Email du client " title="" required id="email"  class="form-contains" aria-describedby="passwordHelpInline">
+          <input type="email" name="email"  placeholder="Email du client " title="" required id="email"  class="form-contains" aria-describedby="passwordHelpInline">
         </div>
         <div class="col-auto">
-          <input type="text" pattern="^[\+]?[(]?[0-9]{5}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$" value="+221" required id="number" placeholder="Numero de telephone " class="form-contains" autocomplete="on" aria-describedby="passwordHelpInline">
+          <input type="text" name="number_phone" pattern="^[\+]?[(]?[0-9]{5}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$" value="+221" required id="number" placeholder="Numero de telephone " class="form-contains" autocomplete="on" aria-describedby="passwordHelpInline">
         </div>
       </div>
       <div style="display: flex;justify-content: center; margin-top: 20px;font-size: 0.8em;" id="error_text"></div>
@@ -104,11 +104,11 @@
 
         </div>
         <div class="col-auto">
-          <input type="text" required class="form-contains"  autocomplete="on" id="quantity" placeholder="Quantité " aria-describedby="passwordHelpInline">
+          <input type="text" required class="form-contains" name="quantity" autocomplete="on" id="quantity" placeholder="Quantité " aria-describedby="passwordHelpInline">
         </div>
 
         <div class="select-div">
-          <input type="date" required class="form-contains" id="date" autocomplete="on" placeholder="Date" >
+          <input type="date" required class="form-contains" name="date" id="date" autocomplete="on" placeholder="Date" >
         </div>
         <div class="div-for-moving-select-option">
         </div> 
@@ -117,7 +117,7 @@
      
 </div>
 <div id="btn-submit">
-  <input type="button" class="btn btn-primary" value="Enregistrer" onclick="put_user_information_in_local_storage()" id="btn-submit">
+  <input type="button" class="btn btn-primary" value="Enregistrer" onclick="check_informations_validity()" id="btn-submit">
   </div>
   </form>
   
